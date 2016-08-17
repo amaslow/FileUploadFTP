@@ -21,7 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class FileUploadFTP {
 
-    static String productContent = "X:/Smartwares - Product Content/PRODUCTS/";
+    static String productContent = "//172.16.55.197/design/Smartwares - Product Content/PRODUCTS/";
     static String dst = "/Design/Supershift S&L/PRODUCTS/";
     static String excelSource = "G:\\CM\\Category Management Only\\_S0000_Trade marketing\\Pictures Spaceman\\SAP_EAN.xlsx";
     static Map<String, String> myMap = new HashMap<>();
@@ -69,7 +69,7 @@ public class FileUploadFTP {
                 @Override
                 public boolean accept(File current, String name) {
                     return (new File(current, name).isFile()
-                            && (new Date(new File(current, name).lastModified()).after(new Date(new Date().getTime() - (2 * 1000 * 60 * 60 * 24))))
+                            && (new Date(new File(current, name).lastModified()).after(new Date(new Date().getTime() - (1 * 1000 * 60 * 60 * 24))))
                             && !name.equals("Thumbs.db")
                             && !name.contains("testDoC_")
                             && !name.contains("repealed_DoC"));
@@ -98,6 +98,9 @@ public class FileUploadFTP {
                     String oldFileName = fileUpd.get(i).toString().substring(fileUpd.get(i).toString().indexOf("-") + 1, fileUpd.get(i).toString().length());
                     StringBuffer currentFileName = new StringBuffer(oldFileName);
                     String newFilename = currentFileName.toString();
+                    if (newFilename.length() == 16 && (newFilename.startsWith("LR_") || newFilename.startsWith("MR_") || newFilename.startsWith("HR_"))) {
+                        newFilename = currentFileName.insert(currentFileName.indexOf(folderToUpd) + 8, "0").toString();
+                    }
                     if (myMap.get(sap) != null) {
                         newFilename = currentFileName.insert(currentFileName.indexOf(folderToUpd) + 7, "_" + myMap.get(sap).replace("/", "_")).toString();
                     }
