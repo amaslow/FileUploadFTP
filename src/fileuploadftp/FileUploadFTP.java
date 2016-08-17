@@ -98,6 +98,9 @@ public class FileUploadFTP {
                     String oldFileName = fileUpd.get(i).toString().substring(fileUpd.get(i).toString().indexOf("-") + 1, fileUpd.get(i).toString().length());
                     StringBuffer currentFileName = new StringBuffer(oldFileName);
                     String newFilename = currentFileName.toString();
+                    if (newFilename.length() == 16 && (newFilename.startsWith("LR_") || newFilename.startsWith("MR_") || newFilename.startsWith("HR_"))) {
+                        newFilename = currentFileName.insert(currentFileName.indexOf(folderToUpd) + 8, "0").toString();
+                    }
                     if (myMap.get(sap) != null) {
                         newFilename = currentFileName.insert(currentFileName.indexOf(folderToUpd) + 7, "_" + myMap.get(sap).replace("/", "_")).toString();
                     }
