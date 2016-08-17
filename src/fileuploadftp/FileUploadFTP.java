@@ -21,7 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class FileUploadFTP {
 
-    static String productContent = "X:/Smartwares - Product Content/PRODUCTS/";
+    static String productContent = "//172.16.55.197/design/Smartwares - Product Content/PRODUCTS/";
     static String dst = "/Design/Supershift S&L/PRODUCTS/";
     static String excelSource = "G:\\CM\\Category Management Only\\_S0000_Trade marketing\\Pictures Spaceman\\SAP_EAN.xlsx";
     static Map<String, String> myMap = new HashMap<>();
@@ -69,7 +69,7 @@ public class FileUploadFTP {
                 @Override
                 public boolean accept(File current, String name) {
                     return (new File(current, name).isFile()
-                            && (new Date(new File(current, name).lastModified()).after(new Date(new Date().getTime() - (2 * 1000 * 60 * 60 * 24))))
+                            && (new Date(new File(current, name).lastModified()).after(new Date(new Date().getTime() - (1 * 1000 * 60 * 60 * 24))))
                             && !name.equals("Thumbs.db")
                             && !name.contains("testDoC_")
                             && !name.contains("repealed_DoC"));
