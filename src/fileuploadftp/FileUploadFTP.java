@@ -23,11 +23,12 @@ public class FileUploadFTP {
 
     static String productContent = "//172.16.55.197/design/Smartwares - Product Content/PRODUCTS/";
     static String dst = "/Design/Supershift S&L/PRODUCTS/";
-    static String excelSource = "G:\\CM\\Category Management Only\\_S0000_Trade marketing\\Pictures Spaceman\\SAP_EAN.xlsx";
+    static String excelSource = "\\\\file01\\SL-Data\\CM\\Category Management Only\\_S0000_Trade marketing\\Pictures Spaceman\\SAP_EAN.xlsx";
+    static String logFile = "\\\\srvdata\\Data\\Automatisering\\Artur\\Logs\\FileUploadFtp.log";
     static Map<String, String> myMap = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
-        FileWriter fw = new FileWriter("H:/Logs/FileUploadFtp.log", true);
+        FileWriter fw = new FileWriter(logFile, true);
         BufferedWriter bw = new BufferedWriter(fw);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         bw.newLine();
