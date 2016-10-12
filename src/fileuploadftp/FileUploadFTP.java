@@ -70,9 +70,8 @@ public class FileUploadFTP {
                 @Override
                 public boolean accept(File current, String name) {
                     return (new File(current, name).isFile()
-                            && (new Date(new File(current, name).lastModified()).after(new Date(new Date().getTime() - (1 * 1000 * 60 * 60 * 24))))
+                            && (new Date(new File(current, name).lastModified()).after(new Date(new Date().getTime() - ((long) 1 * 1000 * 60 * 60 * 24))))
                             && !name.equals("Thumbs.db")
-                            && !name.contains("testDoC_")
                             && !name.contains("repealed_DoC"));
                 }
             });
